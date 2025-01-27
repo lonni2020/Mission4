@@ -32,7 +32,7 @@ namespace Mission4
             {
                 if (board[row][1] != '-' && board[row][1] == board[row][2] && board[row][2] == board[row][3])
                 {
-                    result = board[row][0];
+                    result = board[row][1];
                 }  
             }
 
