@@ -24,6 +24,7 @@ namespace Mission4
         public char WinLose(char[][] board)
         {
             char result = '-';
+            bool isDraw = true;
 
 
             // for rows check
@@ -56,24 +57,28 @@ namespace Mission4
                 result = board[1][3]; // Return the winner (X or O)
             }
 
-
             //check for a draw
-            /*foreach (char[] row in board)
+            foreach (char[] row in board)
             {
                 foreach (char cell in row)
                 {
                     if (cell == '-') // Empty cell found
                     {
-                        result = '-';
+                        isDraw = false;
                     }
                 }
+                if (!isDraw) break;
+            }
 
-            }*/
-             // No empty cells, it's a draw
-
+            if (result == '-' && isDraw)
+            {
+                result = 'D';
+            }
 
             return result;
 
         }
+
+
     }
 }
