@@ -33,59 +33,73 @@ while (game_on == true)
     }
 
     // Ask the player where they want to place their marker
-    Console.WriteLine($"\nPlayer {player}: Where do you want to place your marker? (Give a letter and number, such as A1)");
+    Console.WriteLine($"\n\nPlayer {player}: Where do you want to place your marker? (Give a letter and number, such as A1)");
     string position = Console.ReadLine().ToUpper();
 
     // Make sure input is valid
-    bool input_is_valid = true;
-    do
-    { 
+    bool input_is_valid = false;
+    while(!input_is_valid)
+    {
         // Make sure input is the valid length
         if (position.Length != 2)
         {
             Console.WriteLine("Your input is longer than 2 characters. Please enter a new position.");
-            input_is_valid = false;
         }
-
-        // Make sure first character is a valid letter  
-        char letter = position[0];
-        if (!char.IsLetter(letter) || letter < 'A' || letter > 'C')
+        else
         {
-            Console.WriteLine("The first character you entered is not a valid letter (make sure to input A, B, or C). Please enter a new position.");
-            input_is_valid = false;
-        }
+            // Make sure first character is a valid letter  
+            char letter = position[0];
+            if (!char.IsLetter(letter) || letter < 'A' || letter > 'C')
+            {
+                Console.WriteLine("The first character you entered is not a valid letter (make sure to input A, B, or C). Please enter a new position.");
+            }
 
-        // Make sure second character is a valid number  
-        char number = position[1];
-        if (!char.IsDigit(number) || number < '1' || number > '3')
+            else
+            {
+                // Make sure second character is a valid number  
+                char number = position[1];
+                if (!char.IsDigit(number) || number < '1' || number > '3')
+                {
+                    Console.WriteLine("The second character you entered is not a valid letter (make sure to input 1, 2, or 3). Please enter a new position.");
+                }
+
+                else
+                {
+                    // Make sure the position is not already occupied
+                    if (positions_used.Contains(position))
+                    {
+                        Console.WriteLine("The position you selected is already occupied. Please enter a new position.");
+                        input_is_valid = false;
+                    }
+                    else
+                    {
+                        input_is_valid = true;
+                    }
+                }
+            } 
+        }
+        // If the input is invalid, ask for a new one
+        if (!input_is_valid)
         {
-            Console.WriteLine("The second character you entered is not a valid letter (make sure to input 1, 2, or 3). Please enter a new position.");
-            input_is_valid = false;
+            Console.WriteLine("Try again:");
+            position = Console.ReadLine().ToUpper();
         }
-
-        // Make sure the position is not already occupied
-        if (positions_used.Contains(position))
-        {
-            Console.WriteLine("The position you selected is already occupied. Please enter a new position.");
-            input_is_valid = false;
-        }
-
-    } while (input_is_valid == false);
+    }
 
     // Add the marker to the occupied list
     positions_used.Add(position);
 
     // Print the board with the new marking on it
-    int column = position[0] - 'A';
-    int row = position[1] - 1;
+    int column = position[0] - 'A' + 1;
+    int row = position[1] - '1' + 1;
 
     if (player == 1)
     {
-        game_board[column][row] = 'X';
+        game_board[row][column] = 'X';
     }
     else
     {
-        game_board[column][row] = 'O';
+        game_board[row][column] = 'O';
     }
 
     // Pass array to method to print game board
@@ -97,17 +111,17 @@ while (game_on == true)
     // Notify players if someone has won
     if (round_result == 'X')
     {
+        Console.WriteLine($"\nPlayer {player} won! Great game!");
         game_on = false;
     }
     else if (round_result == 'O')
     {
+        Console.WriteLine($"\nPlayer {player} won! Great game!");
         game_on = false;
     }
     else if (round_result == 'D')
     {
+        Console.WriteLine("\nIt was a draw! Great game!");
         game_on = false;
     }
 }
-
-// End game
-Console.WriteLine($"Player {player} won! Great game!");
