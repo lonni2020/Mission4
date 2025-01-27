@@ -16,6 +16,9 @@ game_board[3] = new char[] { '3', '-', '-', '-' };
 // Welcome the user
 Console.WriteLine("Welcome to the Tic Tac Toe game!");
 
+// Pass array to method to print game board
+bg.PrintBoard(game_board);
+
 // Loop until game is over
 while (game_on == true)
 {
@@ -30,7 +33,7 @@ while (game_on == true)
     }
 
     // Ask the player where they want to place their marker
-    Console.WriteLine($"Player {player}: Where do you want to place your marker? (Give a letter and number, such as A1)");
+    Console.WriteLine($"\nPlayer {player}: Where do you want to place your marker? (Give a letter and number, such as A1)");
     string position = Console.ReadLine().ToUpper();
 
     // Make sure input is valid
@@ -89,18 +92,18 @@ while (game_on == true)
     bg.PrintBoard(game_board);
 
     // Check if someone has won
-    string round_result = bg.WinLose(game_board);
+    char round_result = bg.WinLose(game_board);
 
     // Notify players if someone has won
-    if (round_result == "X")
+    if (round_result == 'X')
     {
         game_on = false;
     }
-    else if (round_result == "O")
+    else if (round_result == 'O')
     {
         game_on = false;
     }
-    else if (round_result == "Draw")
+    else if (round_result == 'D')
     {
         game_on = false;
     }
