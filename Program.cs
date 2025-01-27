@@ -111,17 +111,17 @@ while (game_on == true)
     // Notify players if someone has won
     if (round_result == 'X')
     {
-        Console.WriteLine($"\nPlayer {player} won! Great game!");
+        Console.WriteLine($"\n\nPlayer {player} won! Great game!");
         game_on = false;
     }
     else if (round_result == 'O')
     {
-        Console.WriteLine($"\nPlayer {player} won! Great game!");
+        Console.WriteLine($"\n\nPlayer {player} won! Great game!");
         game_on = false;
     }
     else if (round_result == 'D')
     {
-        Console.WriteLine("\nIt was a draw! Great game!");
+        Console.WriteLine("\n\nIt was a draw! Great game!");
         game_on = false;
     }
 }
