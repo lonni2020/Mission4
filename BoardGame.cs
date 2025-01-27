@@ -58,7 +58,7 @@ namespace Mission4
 
 
             //check for a draw
-            foreach (char[] row in board)
+            /*foreach (char[] row in board)
             {
                 foreach (char cell in row)
                 {
@@ -67,8 +67,9 @@ namespace Mission4
                         result = '-';
                     }
                 }
-            }
-            result = 'D'; // No empty cells, it's a draw
+
+            }*/
+             // No empty cells, it's a draw
 
 
             return result;
