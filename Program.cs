@@ -1,4 +1,7 @@
-﻿using Mission4;
+﻿// Mission 4 Assignment
+// Group 2-10: Bentley Redden, Marissa Lewis, Lonni Burdett, Annabelle Baker
+
+using Mission4;
 
 // Initialize variables and classes
 bool game_on = true;  // Declare whether the game should continue or not
